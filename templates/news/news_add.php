@@ -243,10 +243,13 @@ if ($news_mode == 'edit') {
         </div><!-- /.row -->
     </form>
 
-    <!-- Summernote (Bootstrap 3) – Dateien nach /js/summernote/ kopieren -->
-    <!-- Download: https://github.com/summernote/summernote/releases/tag/v0.8.20 -->
-    <link href="/css/summernote.min.css" rel="stylesheet">
-    <script src="/js/summernote/summernote.min.js" defer></script>
+    <?php
+    if (!defined('BS_VERSION') || BS_VERSION <= 3) { $snSuffix = ''; }
+    elseif (BS_VERSION == 4)                        { $snSuffix = '-bs4'; }
+    else                                            { $snSuffix = '-bs5'; }
+    ?>
+    <link href="/css/summernote<?php echo $snSuffix; ?>.min.css" rel="stylesheet">
+    <script src="/js/summernote/summernote<?php echo $snSuffix; ?>.min.js" defer></script>
     <script src="/js/summernote/lang/summernote-de-DE.min.js" defer></script>
     <script src="/js/summernote-init.js" defer></script>
 
