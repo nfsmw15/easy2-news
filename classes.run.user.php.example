@@ -1,0 +1,5 @@
+<?php
+// In system/classes.run.user.php eintragen:
+
+// News-System initialisieren
+$newssystem = new newssystem();

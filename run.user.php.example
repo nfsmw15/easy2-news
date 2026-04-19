@@ -1,0 +1,36 @@
+<?php
+// In system/run.user.php eintragen:
+
+// News hinzufügen
+if ($p == 'news_add' && $c == 'newsadd') {
+    $error = $newssystem->newsAdd();
+}
+
+// News bearbeiten
+if ($p == 'news_add' && $c == 'newsedit') {
+    $error = $newssystem->newsEdit();
+}
+
+// News löschen
+if ($p == 'news_add' && $c == 'newsdelete') {
+    $error = $newssystem->newsDelete();
+}
+
+// News aktiv/inaktiv umschalten
+if ($p == 'news_add' && $c == 'newstoggle') {
+    $error = $newssystem->newsToggleActive();
+}
+
+// Erfolgsmeldungen
+if ($p == 'news_add' && $h == 'news_saved') {
+    $success = 'Der Newseintrag wurde erfolgreich erstellt!';
+}
+if ($p == 'news_add' && $h == 'news_edited') {
+    $success = 'Der Newseintrag wurde erfolgreich gespeichert!';
+}
+if ($p == 'news_add' && $h == 'news_deleted') {
+    $success = 'Der Newseintrag wurde erfolgreich gelöscht!';
+}
+if ($p == 'news_add' && $h == 'news_status_changed') {
+    $success = 'Der Status des Newseintrags wurde geändert!';
+}
