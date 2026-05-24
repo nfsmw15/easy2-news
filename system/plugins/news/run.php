@@ -1,27 +1,24 @@
 <?php
-// In system/run.user.php eintragen:
+declare(strict_types=1);
+/***
+ * easy2-news Plugin
+ * File: system/plugins/news/run.php
+ ***/
 
-// News hinzufügen
+$newssystem = new newssystem();
+
 if ($p == 'news_add' && $c == 'newsadd') {
     $error = $newssystem->newsAdd();
 }
-
-// News bearbeiten
 if ($p == 'news_add' && $c == 'newsedit') {
     $error = $newssystem->newsEdit();
 }
-
-// News löschen
 if ($p == 'news_add' && $c == 'newsdelete') {
     $error = $newssystem->newsDelete();
 }
-
-// News aktiv/inaktiv umschalten
 if ($p == 'news_add' && $c == 'newstoggle') {
     $error = $newssystem->newsToggleActive();
 }
-
-// Erfolgsmeldungen
 if ($p == 'news_add' && $h == 'news_saved') {
     $success = 'Der Newseintrag wurde erfolgreich erstellt!';
 }

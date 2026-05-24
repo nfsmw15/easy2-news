@@ -20,3 +20,25 @@ ALTER TABLE `[prefix]_news`
 ALTER TABLE `[prefix]_news`
   MODIFY `id` bigint(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 COMMIT;
+
+-- Seiten registrieren
+INSERT INTO `[prefix]_sites` (`filename`, `dir`, `title`, `type`) VALUES
+('newsall', 'news/', 'News', 'php'),
+('news', 'news/', 'News Detailseite', 'php'),
+('news_add', 'news/', 'News verwalten', 'php');
+
+-- Öffentlicher Menüeintrag: News (Hauptmenü, oberste Ebene, Position 1)
+INSERT INTO `[prefix]_menu` (`sid`, `title`, `icon`, `pos`, `url`, `under`, `menu`, `link_type`, `target`)
+SELECT `id`, 'News', 'fa-newspaper-o', 1, '', 0, 1, 0, '_self'
+FROM `[prefix]_sites` WHERE `filename` = 'newsall' AND `dir` = 'news/' LIMIT 1;
+
+-- Admin-Menüeintrag: News verwalten (unter Einstellungen, Position 4)
+INSERT INTO `[prefix]_menu` (`sid`, `title`, `icon`, `pos`, `url`, `under`, `menu`, `link_type`, `target`)
+SELECT
+    (SELECT `id` FROM `[prefix]_sites` WHERE `filename` = 'news_add' AND `dir` = 'news/' LIMIT 1),
+    'News verwalten',
+    'fa-newspaper-o',
+    4,
+    '',
+    COALESCE((SELECT `id` FROM `[prefix]_menu` WHERE `title` = 'Einstellungen' AND `under` = 0 LIMIT 1), 0),
+    1, 0, '_self';
