@@ -1,5 +1,12 @@
 # Changelog — easy2-news
 
+## [1.1.3] — 2026-05-25
+
+### Bugfix / Refactoring
+- `js/news-editor-init.js` neu — eigene Editor-Initialisierung für den `#news`-Editor, per `defer` in `news_add.php` geladen; kompatibel mit BS4 und BS5
+- `js/summernote-init.js` entfernt — gehört zu easy2-php8, nicht zum Plugin; verhinderte korrekte Initialisierung im BS5-Betrieb
+- `templates/news/news_add.php` lädt nur noch `news-editor-init.js`, kein Summernote-Doppelload
+
 ## [1.1.2] — 2026-05-24
 
 ### Bugfix

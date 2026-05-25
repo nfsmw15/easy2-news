@@ -243,6 +243,8 @@ if ($news_mode == 'edit') {
         </div><!-- /.row -->
     </form>
 
+    <script src="js/news-editor-init.js" defer></script>
+
     <?php endif; ?>
 
 </div><!-- /.container -->
